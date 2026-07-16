@@ -15,16 +15,49 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SimpleTextRpg.cpp">
+    <ClCompile Include="Src\ConsoleUtils.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CSVReader.cpp">
+    <ClCompile Include="Src\CSVReader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameScreen.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Player.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\TextDataLoader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CSVReader.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Src\ConsoleUtils.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\CSVReader.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\GameScreen.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Inventory.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Item.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Player.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\TextDataLoader.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\TextDataTypes.h">
+      <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,8 @@
-﻿Name,Interact With,Operation,Value
-hp_potion,Player,add,20
-mp_potion,Player,add,20
-stronger,Player,multiply,2
-harder,Player,multiply,2
+﻿item_id,display_name,item_type,operation,target_stat,value,price
+hp_potion,,consumable,add,hp,20,
+mp_potion,,consumable,add,mp,20,
+power_up,,boost,multiply,atk,2,
+defense_up,,boost,multiply,def,2,
+herb,,material,none,none,0,
+clear_water,,material,none,none,0,
+berry,,material,none,none,0,

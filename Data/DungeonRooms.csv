@@ -1,0 +1,5 @@
+﻿floor,room_order,monster_id,is_boss
+1,1,slime,false
+1,2,goblin,false
+1,3,orc,false
+1,4,dragon,true

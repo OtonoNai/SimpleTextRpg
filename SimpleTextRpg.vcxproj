@@ -18,6 +18,24 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\ConsoleUtils.cpp" />
+    <ClCompile Include="Src\CSVReader.cpp" />
+    <ClCompile Include="Src\GameScreen.cpp" />
+    <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Player.cpp" />
+    <ClCompile Include="Src\TextDataLoader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\ConsoleUtils.h" />
+    <ClInclude Include="Src\CSVReader.h" />
+    <ClInclude Include="Src\GameScreen.h" />
+    <ClInclude Include="Src\Inventory.h" />
+    <ClInclude Include="Src\Item.h" />
+    <ClInclude Include="Src\Player.h" />
+    <ClInclude Include="Src\TextDataLoader.h" />
+    <ClInclude Include="Src\TextDataTypes.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -139,13 +157,6 @@
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="CSVReader.cpp" />
-    <ClCompile Include="SimpleTextRpg.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CSVReader.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

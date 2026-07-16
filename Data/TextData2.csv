@@ -1,16 +1,16 @@
-﻿Line,Text,IO,Vars,Num of Var,Var Type,Var Range,Interact Type ,Interact Category,Interact With
-1,"* HP 포션 5개, MP 포션 5개가 기본 지급되었습니다.",out,,,,,,,
-2,border,out,,,,,,,
-3,< 캐릭터 강화 >,out,,,,,,,
-4,1. HP UP    2. MP UP    3. 공격력 2배,out,,,,,,,
-5,4. 방어력 2배    5. 현재 능력치    0. 게임 시작,out,,,,,,,
-6,border,out,,,,,,,
-7,번호를 선택해주세요 : ,in,select,1,int,0-5,,,
-8,/PLEASE ENTER/,console,,,,,,,
-9,"HP + 20, HP 포션 1개 사용",interact,select,1,int,,use,item,hp_potion
-9,"MP + 20, MP 포션 1개 사용",interact,select,1,int,,use,item,mp_potion
-9,포션 부족,interact,select,1,int,,,,
-9,공격력이 2배가 되었습니다.,interact,select,1,int,,use,item,stroner
-9,방어력이 2배가 되었습니다.,interact,select,1,int,,use,item,harder
-9,HP : {hp} / MP : {mp} / 공격력 : {str} / 방어력 : {dfs},interact,select,1,int,,,,
-9,게임을 시작합니다.,interact,select,1,int,,,,
+﻿Line,Text,IO,Vars,Num of Var,Var Type,Var Range,Interact Type,Interact Category,Interact With,Trigger,Required Item,Required Qty,Result Type
+1,"* HP 포션 5개, MP 포션 5개가 기본 지급되었습니다.",out,,,,,,,,,,,
+2,border,out,,,,,,,,,,,
+3,< 캐릭터 강화 >,out,,,,,,,,,,,
+4,1. HP UP    2. MP UP    3. 공격력 2배,out,,,,,,,,,,,
+5,4. 방어력 2배    5. 현재 능력치    0. 게임 시작,out,,,,,,,,,,,
+6,border,out,,,,,,,,,,,
+7,번호를 선택해주세요 : ,in,select,1,int,0-5,,,,,,,
+8,/PLEASE ENTER/,console,,,,,,,,,,,
+9,"HP + 20, HP 포션 1개 사용",interact,select,1,int,,use,item,hp_potion,,,,
+9,"MP + 20, MP 포션 1개 사용",interact,select,1,int,,use,item,mp_potion,,,,
+9,포션 부족,interact,select,1,int,,,,,,,,
+9,공격력이 2배가 되었습니다.,interact,select,1,int,,use,item,power_up,,,,
+9,방어력이 2배가 되었습니다.,interact,select,1,int,,use,item,defense_up,,,,
+9,HP : {hp} / MP : {mp} / 공격력 : {str} / 방어력 : {dfs},interact,select,1,int,,,,,,,,
+9,게임을 시작합니다.,interact,select,1,int,,,,,,,,

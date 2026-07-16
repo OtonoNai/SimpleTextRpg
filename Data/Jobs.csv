@@ -1,0 +1,5 @@
+﻿job_id,display_name,bonus_stat,bonus_value,attack_message,hit_count,damage_divisor
+warrior,전사,,,,,
+mage,마법사,,,,,
+thief,도적,,,,,
+archer,궁수,,,,,

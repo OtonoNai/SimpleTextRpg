@@ -1,0 +1,5 @@
+﻿monster_id,display_name,hp,atk,def,drop_item_id,exp_reward
+slime,슬라임,,,,,
+goblin,고블린,,,,,
+orc,오크,,,,,
+dragon,드래곤,,,,,

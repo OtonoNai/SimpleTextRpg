@@ -6,8 +6,7 @@
 
 CSVReader::iterator::iterator(std::vector<std::vector<std::string>>::const_iterator itr)
 	: row_iterator(itr)
-{
-}
+{}
 
 const std::string& CSVReader::iterator::GetValue(int index)
 {
@@ -79,16 +78,16 @@ bool CSVReader::ReadStream(const std::string& str)
 
 	char utf8bom[3] = {};
 	std::streamsize size = stream.readsome(utf8bom, 3);
-	if(3 == size)
+	if (3 == size)
 	{
 		if ((char)0xEF == utf8bom[0] && (char)0xBB == utf8bom[1] && (char)0xBF == utf8bom[2])
 		{
 			stream.seekg(3);
 		}
-        else
-        {
-            stream.seekg(0);
-        }
+		else
+		{
+			stream.seekg(0);
+		}
 	}
 
 	// read data

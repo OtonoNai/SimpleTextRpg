@@ -41,6 +41,7 @@ bool CheckInputIsValid(std::string Value, std::vector<int> Range, int X, int Y)
 		Sleep(1000);
 		MoveCursor(X + 1, Y - 1);
 		std::cout << ClearLine();
+		FlushInput();
 		return false;
 	}
 }
@@ -91,6 +92,7 @@ void GetInput(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 			Sleep(1000);
 			MoveCursor(X + 1, Y - 1);
 			std::cout << ClearLine();
+			FlushInput();
 			goto RETRY_INPUT;
 		}
 
@@ -219,12 +221,14 @@ void WaitLoading(std::string Text, FTextData& Data)
 		std::cout << ExitText << std::endl;
 		std::cout << StepText << std::endl;
 	}
+
+	FlushInput();
 }
 
 bool CheckExit()
 {
 	std::string Input;
-	std::cin >> Input;
+	std::getline(std::cin, Input);
 
 	if (Input == "exit")
 	{

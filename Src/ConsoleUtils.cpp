@@ -26,3 +26,8 @@ void ClearConsole()
     system("cls");
     MoveCursor(0, 0);
 }
+
+void FlushInput()
+{
+    FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+}

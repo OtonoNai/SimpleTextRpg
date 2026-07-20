@@ -5,3 +5,4 @@
 void MoveCursor(int X, int Y);
 std::string ClearLine();
 void ClearConsole();
+void FlushInput();

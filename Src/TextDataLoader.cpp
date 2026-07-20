@@ -42,6 +42,7 @@ FSeparatedData SeparateText(std::vector<std::array<std::string, FTextData::NumOf
     std::vector<FTextDataIn> Inputs;
     std::vector<FTextDataUpdate> Updates;
     std::vector<FTextDataInteract> Interacts;
+    int ConsoleLine = -1;
 
     for (int i = 0; i < List.size(); ++i)
     {
@@ -61,6 +62,11 @@ FSeparatedData SeparateText(std::vector<std::array<std::string, FTextData::NumOf
         else
         {
             int ScreenLine = static_cast<int>(View.size());
+
+            if (List[i][EDataRow::IoType] == "console")
+            {
+                ConsoleLine = ScreenLine;
+            }
 
             if (List[i][EDataRow::IoType] == "in")
             {
@@ -87,6 +93,12 @@ FSeparatedData SeparateText(std::vector<std::array<std::string, FTextData::NumOf
 
                 TempInteracts.Index = stoi(List[i][EDataRow::Line]);
                 TempInteracts.Text = List[i][EDataRow::RawText];
+                TempInteracts.Trigger = stoi(List[i][EDataRow::Trigger]);
+                TempInteracts.RequiredItem = List[i][EDataRow::RequiredItem];
+                TempInteracts.RequireQty = List[i][EDataRow::RequiredQty].empty() ? 0 : stoi(List[i][EDataRow::RequiredQty]);
+                TempInteracts.ResultType = List[i][EDataRow::ResultType];
+
+                Interacts.push_back(TempInteracts);
                 continue;
             }
 
@@ -101,6 +113,7 @@ FSeparatedData SeparateText(std::vector<std::array<std::string, FTextData::NumOf
         Inputs,
         Updates,
         Interacts,
+        ConsoleLine,
     };
 
     return Result;
@@ -118,4 +131,6 @@ void BuildData(FTextData& Data)
     Data.View = Temp.View;
     Data.In = Temp.Inputs;
     Data.Update = Temp.Updates;
+    Data.Interacts = Temp.Interacts;
+    Data.ConsoleLine = Temp.ConsoleLine;
 }

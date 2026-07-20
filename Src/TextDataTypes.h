@@ -46,6 +46,10 @@ struct FTextDataInteract
 {
     int Index;
     std::string Text;
+    int Trigger;
+    std::string RequiredItem;
+    int RequireQty;
+    std::string ResultType;
 };
 
 struct FTextData
@@ -55,6 +59,10 @@ public:
 
     static const char BorderText = '=';
     static const int BorderLength = 40;
+
+    std::string LastInteractMessage;
+    bool bAdvancePhase = true;
+    int ConsoleLine = -1;
 
     std::vector<std::array<std::string, NumOfRow>>& GetDataOrigin()
     {
@@ -80,6 +88,7 @@ public:
     std::vector<FTextDataView> View;
     std::vector<FTextDataIn> In;
     std::vector<FTextDataUpdate> Update;
+    std::vector<FTextDataInteract> Interacts;
 
 private:
     bool bHasSelect = false;
@@ -90,5 +99,6 @@ struct FSeparatedData
     std::vector<FTextDataView> View;
     std::vector<FTextDataIn> Inputs;
     std::vector<FTextDataUpdate> Updates;
-    std::vector<FTextDataInteract> Selects;
+    std::vector<FTextDataInteract> Interacts;
+    int ConsoleLine = -1;
 };

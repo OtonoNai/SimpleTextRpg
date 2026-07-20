@@ -22,6 +22,9 @@
     <ClCompile Include="Src\ConsoleUtils.cpp" />
     <ClCompile Include="Src\CSVReader.cpp" />
     <ClCompile Include="Src\GameScreen.cpp" />
+    <ClCompile Include="Src\Inventory.cpp" />
+    <ClCompile Include="Src\Item.cpp" />
+    <ClCompile Include="Src\ItemLoader.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\Player.cpp" />
     <ClCompile Include="Src\TextDataLoader.cpp" />
@@ -32,6 +35,7 @@
     <ClInclude Include="Src\GameScreen.h" />
     <ClInclude Include="Src\Inventory.h" />
     <ClInclude Include="Src\Item.h" />
+    <ClInclude Include="Src\ItemLoader.h" />
     <ClInclude Include="Src\Player.h" />
     <ClInclude Include="Src\TextDataLoader.h" />
     <ClInclude Include="Src\TextDataTypes.h" />

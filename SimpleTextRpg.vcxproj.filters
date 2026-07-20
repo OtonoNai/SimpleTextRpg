@@ -33,6 +33,15 @@
     <ClCompile Include="Src\TextDataLoader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Item.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Inventory.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\ItemLoader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ConsoleUtils.h">
@@ -57,6 +66,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Src\TextDataTypes.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\ItemLoader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

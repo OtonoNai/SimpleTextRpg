@@ -156,7 +156,7 @@ void GetInput(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 	}
 }
 
-std::string SubtituteVars(std::string Text, FPlayer& Player)
+std::string SubstituteVars(std::string Text, FPlayer& Player)
 {
 	size_t TStart = 0;
 	while ((TStart = Text.find("{", TStart)) != std::string::npos)
@@ -188,21 +188,21 @@ void Interact(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 			continue;
 		}
 
-		bool bCounditionMet = true;
+		bool bConditionMet = true;
 
 		if (!Candidate.RequiredItem.empty())
 		{
-			bCounditionMet = Inventory.HasItem(Candidate.RequiredItem, Candidate.RequiredQty);
+			bConditionMet = Inventory.HasItem(Candidate.RequiredItem, Candidate.RequiredQty);
 		}
 
-		std::string ExpectedResult = bCounditionMet ? "success" : "fail";
+		std::string ExpectedResult = bConditionMet ? "success" : "fail";
 
 		if (Candidate.ResultType != ExpectedResult)
 		{
 			continue;
 		}
 
-		if (bCounditionMet && !Candidate.RequiredItem.empty())
+		if (bConditionMet && !Candidate.RequiredItem.empty())
 		{
 			auto ItemIt = Items.find(Candidate.RequiredItem);
 
@@ -213,7 +213,7 @@ void Interact(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 			}
 		}
 
-		Data.LastInteractMessage = SubtituteVars(Candidate.Text, Player);
+		Data.LastInteractMessage = SubstituteVars(Candidate.Text, Player);
 		break;
 	}
 
@@ -228,7 +228,7 @@ void UpdateRender(FTextData& Data, FPlayer& Player)
 
 	for (const auto& Args : TempUpdate)
 	{
-		std::string TextOrigin = SubtituteVars(Data.View[Args.Line].Data, Player);
+		std::string TextOrigin = SubstituteVars(Data.View[Args.Line].Data, Player);
 		size_t TStart = 0;
 
 		MoveCursor(0, Args.Line - FixYPos);

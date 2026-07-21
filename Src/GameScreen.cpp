@@ -107,6 +107,27 @@ void GetInput(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 	}
 }
 
+std::string SubtituteVars(std::string Text, FPlayer& Player)
+{
+	size_t TStart = 0;
+	while ((TStart = Text.find("{", TStart)) != std::string::npos)
+	{
+		size_t TEnd = Text.find("}", TStart);
+
+		if (TEnd == std::string::npos)
+		{
+			break;
+		}
+
+		std::string Var = Text.substr(TStart + 1, TEnd - TStart - 1);
+		std::string Value = Player.GetStatusFromKey(Var);
+		Text.replace(TStart, TEnd - TStart + 1, Value);
+		TStart += Value.length();
+	}
+
+	return Text;
+}
+
 void Interact(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std::map<std::string, FItem>& Items, int SelectedValue)
 {
 	Data.LastInteractMessage.clear();
@@ -143,7 +164,7 @@ void Interact(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 			}
 		}
 
-		Data.LastInteractMessage = Candidate.Text;
+		Data.LastInteractMessage = SubtituteVars(Candidate.Text, Player);
 		std::cout << Candidate.Text << std::endl;
 		break;
 	}
@@ -159,32 +180,8 @@ void UpdateRender(FTextData& Data, FPlayer& Player)
 
 	for (const auto& Args : TempUpdate)
 	{
-		std::string TextOrigin = Data.View[Args.Line].Data;
+		std::string TextOrigin = SubtituteVars(Data.View[Args.Line].Data, Player);
 		size_t TStart = 0;
-		while ((TStart = TextOrigin.find("{", TStart)) != std::string::npos)
-		{
-			size_t TEnd = TextOrigin.find("}", TStart);
-
-			if (TEnd == std::string::npos)
-			{
-				break;
-			}
-
-			std::string Var = TextOrigin.substr(TStart + 1, TEnd - TStart - 1);
-			std::string Value = Player.GetStatusFromKey(Var);
-
-			if (Var == "Interact_message")
-			{
-				Value = Data.LastInteractMessage;
-			}
-			else
-			{
-				Value = Player.GetStatusFromKey(Var);
-			}
-
-			TextOrigin.replace(TStart, TEnd - TStart + 1, Value);
-			TStart += Value.length();
-		}
 
 		MoveCursor(0, Args.Line - FixYPos);
 		std::cout << ClearLine();

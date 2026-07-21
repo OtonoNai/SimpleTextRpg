@@ -1,12 +1,9 @@
 #include "Player.h"
 
-FPlayer::FPlayer()
-	: Name(""), Hp(0), Mp(0), Atk(0), Def(0)
-{}
-
-FPlayer::FPlayer(std::string InName, int InHp, int InMp, int InAtk, int InDef)
-	: Name(InName), Hp(InHp), Mp(InMp), Atk(InAtk), Def(InDef)
-{}
+FPlayer::FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor)
+	: AttackMessage(InAttackMessage), HitCount(InHitCount), DamageDivisor(InDamageDivisor)
+{
+}
 
 std::map<std::string, std::string> FPlayer::GetAllStatus()
 {
@@ -133,4 +130,14 @@ int FPlayer::GetAtk() const
 int FPlayer::GetDef() const
 {
 	return Def;
+}
+
+int FPlayer::GetHitCount() const
+{
+	return HitCount;
+}
+
+int FPlayer::GetDamageDivisor() const
+{
+	return DamageDivisor;
 }

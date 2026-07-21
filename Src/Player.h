@@ -6,8 +6,10 @@
 class FPlayer
 {
 public:
-    FPlayer();
-    FPlayer(std::string InName, int InHp, int InMp, int InAtk, int InDef);
+    FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor);
+    virtual ~FPlayer() {}
+
+    virtual std::string Attack() const = 0;
 
     std::map<std::string, std::string> GetAllStatus();
     std::string GetStatusFromKey(std::string Key);
@@ -21,6 +23,11 @@ public:
     int GetMp() const;
     int GetAtk() const;
     int GetDef() const;
+    int GetHitCount() const;
+    int GetDamageDivisor() const;
+
+protected:
+    std::string AttackMessage;
 
 private:
     std::string Name;
@@ -29,4 +36,6 @@ private:
     int Atk;
     int Def;
     bool bIsValidStatus = false;
+    int HitCount;
+    int DamageDivisor;
 };

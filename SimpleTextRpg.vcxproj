@@ -25,6 +25,8 @@
     <ClCompile Include="Src\Inventory.cpp" />
     <ClCompile Include="Src\Item.cpp" />
     <ClCompile Include="Src\ItemLoader.cpp" />
+    <ClCompile Include="Src\JobLoader.cpp" />
+    <ClCompile Include="Src\JobTypes.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\Player.cpp" />
     <ClCompile Include="Src\TextDataLoader.cpp" />
@@ -36,9 +38,11 @@
     <ClInclude Include="Src\Inventory.h" />
     <ClInclude Include="Src\Item.h" />
     <ClInclude Include="Src\ItemLoader.h" />
+    <ClInclude Include="Src\JobLoader.h" />
     <ClInclude Include="Src\Player.h" />
     <ClInclude Include="Src\TextDataLoader.h" />
     <ClInclude Include="Src\TextDataTypes.h" />
+    <ClInclude Include="Src\JobTypes.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

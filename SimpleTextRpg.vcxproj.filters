@@ -42,6 +42,12 @@
     <ClCompile Include="Src\ItemLoader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Src\JobTypes.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\JobLoader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ConsoleUtils.h">
@@ -69,6 +75,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Src\ItemLoader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\JobTypes.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\JobLoader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,19 +1,18 @@
 ﻿Line,Text,IO,Vars,Num of Var,Var Type,Var Range,Interact Type,Interact Category,Interact With,Trigger,Required Item,Required Qty,Result Type
-1,"* HP 포션 5개, MP 포션 5개가 기본 지급되었습니다.",out,,,,,,,,,,,
-2,border,out,,,,,,,,,,,
-3,< 캐릭터 강화 >,out,,,,,,,,,,,
-4,1. HP UP    2. MP UP    3. 공격력 2배,out,,,,,,,,,,,
-5,4. 방어력 2배    5. 현재 능력치    0. 게임 시작,out,,,,,,,,,,,
-6,border,out,,,,,,,,,,,
-7,번호를 선택해주세요 : ,in,select,1,int,0-5,,,,,,,
-8,/PLEASE ENTER/,console,,,,,,,,,,,
-9,HP + 20 회복! (HP 포션 1개 사용),interact,select,1,int,,use,item,hp_potion,1,hp_potion,1,success
-9,포션이 부족합니다.,interact,select,1,int,,,,,1,hp_potion,1,fail
-9,MP + 20 회복! (MP 포션 1개 사용),interact,select,1,int,,use,item,mp_potion,2,mp_potion,1,success
-9,포션이 부족합니다.,interact,select,1,int,,,,,2,mp_potion,1,fail
-9,공격력이 2배가 되었습니다.,interact,select,1,int,,use,item,power_up,3,power_up,1,success
-9,강화 재료가 부족합니다.,interact,select,1,int,,,,,3,power_up,1,fail
-9,방어력이 2배가 되었습니다.,interact,select,1,int,,use,item,defense_up,4,defense_up,1,success
-9,강화 재료가 부족합니다.,interact,select,1,int,,,,,4,defense_up,1,fail
-9,HP : {hp} / MP : {mp} / 공격력 : {atk} / 방어력 : {def},interact,select,1,int,,,,,5,,,success
-9,게임을 시작합니다.,interact,select,1,int,,,,,0,,,success
+1,border,out,,,,,,,,,,,
+2,    [ 던전 탈출 텍스트 RPG ],out,,,,,,,,,,,
+3,border,out,,,,,,,,,,,
+4,용사의 이름을 입력해주세요 : ,in,name,1,string,,,,,,,,
+5,empty,out,,,,,,,,,,,
+6,용사의 HP를 입력해주세요 : ,in,hp,1,int,50-1000,,,,,,,
+7,용사의 MP를 입력해주세요 : ,in,mp,1,int,50-1000,,,,,,,
+8,용사의 공격력을 입력해주세요 : ,in,atk,1,int,50-1000,,,,,,,
+9,용사의 방어력을 입력해주세요 : ,in,def,1,int,50-1000,,,,,,,
+10,empty,out,,,,,,,,,,,
+11,border,out,,,,,,,,,,,
+12,    {name} 의 현재 능력치,update,name,1,string,,,,,,,,
+13,border,out,,,,,,,,,,,
+14,HP : {hp} / MP : {mp},update,"hp,mp",2,"int,int",,,,,,,,
+15,공격력 : {atk} / 방어력 : {def},update,"atk,def",2,"int,int",,,,,,,,
+16,border,out,,,,,,,,,,,
+17,/PLEASE ENTER/,console,,,,,,,,,,,

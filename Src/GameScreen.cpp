@@ -5,6 +5,50 @@
 #include <iostream>
 #include <cstdlib>
 
+std::string ReadValidatedInput(const FTextDataIn& Input)
+{
+RETRY_INPUT:
+	std::stringstream Ss(Input.VarRange);
+	std::string Token;
+	std::vector<int> TempRange;
+
+	int Y = Input.Column;
+	int X = Input.VarX;
+
+	MoveCursor(X + 1, Y - 1);
+
+	std::string Value;
+	std::getline(std::cin, Value);
+
+	try
+	{
+		if (Input.VarType == "int")
+		{
+			while (std::getline(Ss, Token, '-'))
+			{
+				TempRange.push_back(stoi(Token));
+			}
+
+			if (!CheckInputIsValid(Value, TempRange, X, Y))
+			{
+				goto RETRY_INPUT;
+			}
+		}
+	}
+	catch (const std::invalid_argument&)
+	{
+		MoveCursor(X + 1, Y - 1);
+		std::cout << "숫자만 입력하세요.";
+		Sleep(1000);
+		MoveCursor(X + 1, Y - 1);
+		std::cout << ClearLine();
+		FlushInput();
+		goto RETRY_INPUT;
+	}
+
+	return Value;
+}
+
 void InitRender(FTextData& Data)
 {
 	std::vector<FTextDataView> Temp = Data.View;
@@ -46,6 +90,51 @@ bool CheckInputIsValid(std::string Value, std::vector<int> Range, int X, int Y)
 	}
 }
 
+FPlayer* CreatePlayerFromJobSelection(const std::string& Value, const std::map<std::string, FJobData>& Jobs)
+{
+	std::string JobId;
+
+	if (Value == "1")
+	{
+		JobId = "warrior";
+	}
+	else if (Value == "2")
+	{
+		JobId = "mage";
+	}
+	else if (Value == "3")
+	{
+		JobId = "thief";
+	}
+	else if (Value == "4")
+	{
+		JobId = "archer";
+	}
+
+	const FJobData& SelectedJob = Jobs.at(JobId);
+
+	if (JobId == "warrior")
+	{
+		return new FWarrior(SelectedJob);
+	}
+	else if (JobId == "mage")
+	{
+		return new FMage(SelectedJob);
+	}
+	else if (JobId == "thief")
+	{
+		return new FThief(SelectedJob);
+	}
+
+	return new FArcher(SelectedJob);
+}
+
+FPlayer* HandleJobSelection(FTextData& Data, const std::map<std::string, FJobData>& Jobs)
+{
+	std::string Value = ReadValidatedInput(Data.In[0]);
+	return CreatePlayerFromJobSelection(Value, Jobs);
+}
+
 void GetInput(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std::map<std::string, FItem>& Items, int Phase)
 {
 	std::vector<FTextDataView> TempView = Data.View;
@@ -54,53 +143,13 @@ void GetInput(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 
 	for (const auto& Input : TempIn)
 	{
-	RETRY_INPUT:
-		std::stringstream Ss(Input.VarRange);
-		std::string Token;
-		std::string TempType;
-		std::vector<int> TempRange;
+		std::string Value = ReadValidatedInput(Input);
 
-		TempType = Input.VarType;
-
-		int Y = Input.Column;
-		int X = Input.VarX;
-
-		MoveCursor(X + 1, Y - 1);
-
-		std::string Value;
-		std::getline(std::cin, Value);
-
-		try
-		{
-			if (TempType == "int")
-			{
-				while (std::getline(Ss, Token, '-'))
-				{
-					TempRange.push_back(stoi(Token));
-				}
-
-				if (!CheckInputIsValid(Value, TempRange, X, Y))
-				{
-					goto RETRY_INPUT;
-				}
-			}
-		}
-		catch (const std::invalid_argument&)
-		{
-			MoveCursor(X + 1, Y - 1);
-			std::cout << "숫자만 입력하세요.";
-			Sleep(1000);
-			MoveCursor(X + 1, Y - 1);
-			std::cout << ClearLine();
-			FlushInput();
-			goto RETRY_INPUT;
-		}
-
-		if (Phase == 1)
+		if (Phase == 2)
 		{
 			Player.SetStatus(Input.VarName, Value);
 		}
-		else if (Phase == 2)
+		else if (Phase == 3)
 		{
 			Interact(Data, Player, Inventory, Items, stoi(Value));
 		}
@@ -245,10 +294,5 @@ void SetNext(FTextData& Data, int& Phase)
 	if (Data.bAdvancePhase)
 	{
 		++Phase;
-
-		if (CheckExit())
-		{
-			exit(0);
-		}
 	}
 }

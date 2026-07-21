@@ -192,7 +192,7 @@ void Interact(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 
 		if (!Candidate.RequiredItem.empty())
 		{
-			bCounditionMet = Inventory.HasItem(Candidate.RequiredItem, Candidate.RequireQty);
+			bCounditionMet = Inventory.HasItem(Candidate.RequiredItem, Candidate.RequiredQty);
 		}
 
 		std::string ExpectedResult = bCounditionMet ? "success" : "fail";
@@ -209,12 +209,11 @@ void Interact(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 			if (ItemIt != Items.end())
 			{
 				ItemIt->second.ApplyTo(Player);
-				Inventory.RemoveItem(Candidate.RequiredItem, Candidate.RequireQty);
+				Inventory.RemoveItem(Candidate.RequiredItem, Candidate.RequiredQty);
 			}
 		}
 
 		Data.LastInteractMessage = SubtituteVars(Candidate.Text, Player);
-		std::cout << Candidate.Text << std::endl;
 		break;
 	}
 

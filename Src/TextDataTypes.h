@@ -48,7 +48,7 @@ struct FTextDataInteract
     std::string Text;
     int Trigger;
     std::string RequiredItem;
-    int RequireQty;
+    int RequiredQty;
     std::string ResultType;
 };
 

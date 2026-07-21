@@ -95,7 +95,7 @@ FSeparatedData SeparateText(std::vector<std::array<std::string, FTextData::NumOf
                 TempInteracts.Text = List[i][EDataRow::RawText];
                 TempInteracts.Trigger = stoi(List[i][EDataRow::Trigger]);
                 TempInteracts.RequiredItem = List[i][EDataRow::RequiredItem];
-                TempInteracts.RequireQty = List[i][EDataRow::RequiredQty].empty() ? 0 : stoi(List[i][EDataRow::RequiredQty]);
+                TempInteracts.RequiredQty = List[i][EDataRow::RequiredQty].empty() ? 0 : stoi(List[i][EDataRow::RequiredQty]);
                 TempInteracts.ResultType = List[i][EDataRow::ResultType];
 
                 Interacts.push_back(TempInteracts);

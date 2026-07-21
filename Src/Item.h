@@ -9,7 +9,7 @@ class FItem
 public:
     FItem(std::string InItemId, std::string InDisplayName, std::string InItemType, std::string InOperation, std::string InTargetStat, int InValue, int InPrice);
 
-    void ApplyTo(FPlayer& Fplayer) const;
+    void ApplyTo(FPlayer& Player) const;
 
     const std::string& GetItemId() const;
     const std::string& GetDisplayName() const;

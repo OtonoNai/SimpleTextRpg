@@ -1,7 +1,7 @@
 #include "Player.h"
 
-FPlayer::FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor, std::string InJobMessage)
-	: AttackMessage(InAttackMessage), HitCount(InHitCount), DamageDivisor(InDamageDivisor), JobMessage(InJobMessage)
+FPlayer::FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor, std::string InJobMessage, std::string InBonusStat, int InBonusValue)
+	: AttackMessage(InAttackMessage), HitCount(InHitCount), DamageDivisor(InDamageDivisor), JobMessage(InJobMessage), BonusStat(InBonusStat), BonusValue(InBonusValue)
 {
 }
 
@@ -144,4 +144,9 @@ int FPlayer::GetHitCount() const
 int FPlayer::GetDamageDivisor() const
 {
 	return DamageDivisor;
+}
+
+void FPlayer::ApplyJobBonus()
+{
+	ModifyStat(BonusStat, "add", BonusValue);
 }

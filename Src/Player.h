@@ -6,7 +6,7 @@
 class FPlayer
 {
 public:
-    FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor, std::string InJobMessage);
+    FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor, std::string InJobMessage, std::string InBonusStat, int InBonusValue);
     virtual ~FPlayer() {}
 
     virtual std::string Attack() const = 0;
@@ -15,6 +15,7 @@ public:
     std::string GetStatusFromKey(std::string Key);
     void SetStatus(std::string Key, std::string Value);
     void ModifyStat(std::string StatName, std::string Operation, int Value);
+    void ApplyJobBonus();
 
     bool GetIsValidStatus();
     void SetIsValidStatus(bool bInValue);
@@ -39,4 +40,6 @@ private:
     int HitCount;
     int DamageDivisor;
     std::string JobMessage;
+    std::string BonusStat;
+    int BonusValue;
 };

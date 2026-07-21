@@ -154,6 +154,11 @@ void GetInput(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std
 			Interact(Data, Player, Inventory, Items, stoi(Value));
 		}
 	}
+
+	if (Phase == 2)
+	{
+		Player.ApplyJobBonus();
+	}
 }
 
 std::string SubstituteVars(std::string Text, FPlayer& Player)

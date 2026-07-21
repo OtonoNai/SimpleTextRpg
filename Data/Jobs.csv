@@ -1,5 +1,5 @@
-﻿job_id,display_name,bonus_stat,bonus_value,attack_message,hit_count,damage_divisor
-warrior,전사,hp,30,장검을 휘두른다!,1,1
-mage,마법사,mp,30,파이어볼을 발사한다!,1,1
-thief,도적,atk,20,단검을 찌른다!,5,5
-archer,궁수,def,20,화살을 쏜다!,3,3
+﻿job_id,display_name,bonus_stat,bonus_value,attack_message,hit_count,damage_divisor,job_message
+warrior,전사,hp,30,장검을 휘두른다!,1,1,전사로 전직하였습니다! (HP +30)
+mage,마법사,mp,30,파이어볼을 발사한다!,1,1,마법사로 전직하였습니다! (MP +30)
+thief,도적,atk,20,단검을 찌른다!,5,5,도적으로 전직하였습니다! (공격력 +20)
+archer,궁수,def,20,화살을 쏜다!,3,3,궁수로 전직하였습니다! (방어력 +20)

@@ -1,7 +1,7 @@
 #include "Player.h"
 
-FPlayer::FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor)
-	: AttackMessage(InAttackMessage), HitCount(InHitCount), DamageDivisor(InDamageDivisor)
+FPlayer::FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor, std::string InJobMessage)
+	: AttackMessage(InAttackMessage), HitCount(InHitCount), DamageDivisor(InDamageDivisor), JobMessage(InJobMessage)
 {
 }
 
@@ -37,6 +37,10 @@ std::string FPlayer::GetStatusFromKey(std::string Key)
 	else if (Key == "def")
 	{
 		return std::to_string(Def);
+	}
+	else if (Key == "job_message")
+	{
+		return JobMessage;
 	}
 
 	return "";

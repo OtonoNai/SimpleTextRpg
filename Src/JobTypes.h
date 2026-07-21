@@ -12,6 +12,7 @@ struct FJobData
 	std::string AttackMessage;
 	int HitCount;
 	int DamageDivisor;
+	std::string JobMessage;
 };
 
 class FWarrior : public FPlayer

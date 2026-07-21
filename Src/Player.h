@@ -6,7 +6,7 @@
 class FPlayer
 {
 public:
-    FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor);
+    FPlayer(std::string InAttackMessage, int InHitCount, int InDamageDivisor, std::string InJobMessage);
     virtual ~FPlayer() {}
 
     virtual std::string Attack() const = 0;
@@ -38,4 +38,5 @@ private:
     bool bIsValidStatus = false;
     int HitCount;
     int DamageDivisor;
+    std::string JobMessage;
 };

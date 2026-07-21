@@ -20,6 +20,7 @@ std::map<std::string, FJobData> LoadJobs(const std::string& FilePath)
 		NewJob.AttackMessage = Row[4];
 		NewJob.HitCount = Row[5].empty() ? 1 : stoi(Row[5]);
 		NewJob.DamageDivisor = Row[6].empty() ? 1 : stoi(Row[6]);
+		NewJob.JobMessage = Row[7];
 
 		Result.emplace(NewJob.JobId, NewJob);
 	}

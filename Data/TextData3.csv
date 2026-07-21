@@ -1,5 +1,5 @@
 ﻿Line,Text,IO,Vars,Num of Var,Var Type,Var Range,Interact Type,Interact Category,Interact With,Trigger,Required Item,Required Qty,Result Type
-1,"* HP 포션 5개, MP 포션 5개가 기본 지급되었습니다.",out,,,,,,,,,,,
+1,"* HP 포션 5개, MP 포션 5개가 기본 지급되었습니다",out,,,,,,,,,,,
 2,border,out,,,,,,,,,,,
 3,< 캐릭터 강화 >,out,,,,,,,,,,,
 4,1. HP UP    2. MP UP    3. 공격력 2배,out,,,,,,,,,,,
@@ -8,12 +8,12 @@
 7,번호를 선택해주세요 : ,in,select,1,int,0-5,,,,,,,
 8,/PLEASE ENTER/,console,,,,,,,,,,,
 9,HP + 20 회복! (HP 포션 1개 사용),interact,select,1,int,,use,item,hp_potion,1,hp_potion,1,success
-9,포션이 부족합니다.,interact,select,1,int,,,,,1,hp_potion,1,fail
+9,포션이 부족합니다,interact,select,1,int,,,,,1,hp_potion,1,fail
 9,MP + 20 회복! (MP 포션 1개 사용),interact,select,1,int,,use,item,mp_potion,2,mp_potion,1,success
-9,포션이 부족합니다.,interact,select,1,int,,,,,2,mp_potion,1,fail
-9,공격력이 2배가 되었습니다.,interact,select,1,int,,use,item,power_up,3,power_up,1,success
-9,강화 재료가 부족합니다.,interact,select,1,int,,,,,3,power_up,1,fail
-9,방어력이 2배가 되었습니다.,interact,select,1,int,,use,item,defense_up,4,defense_up,1,success
-9,강화 재료가 부족합니다.,interact,select,1,int,,,,,4,defense_up,1,fail
+9,포션이 부족합니다,interact,select,1,int,,,,,2,mp_potion,1,fail
+9,공격력이 2배가 되었습니다,interact,select,1,int,,use,item,power_up,3,power_up,1,success
+9,강화 재료가 부족합니다,interact,select,1,int,,,,,3,power_up,1,fail
+9,방어력이 2배가 되었습니다,interact,select,1,int,,use,item,defense_up,4,defense_up,1,success
+9,강화 재료가 부족합니다,interact,select,1,int,,,,,4,defense_up,1,fail
 9,HP : {hp} / MP : {mp} / 공격력 : {atk} / 방어력 : {def},interact,select,1,int,,,,,5,,,success
-9,게임을 시작합니다.,interact,select,1,int,,,,,0,,,success
+9,게임을 시작합니다,interact,select,1,int,,,,,0,,,success

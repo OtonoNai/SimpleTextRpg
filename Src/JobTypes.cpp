@@ -1,7 +1,7 @@
 #include "JobTypes.h"
 
 FWarrior::FWarrior(const FJobData& JobData)
-	: FPlayer(JobData.AttackMessage, JobData.HitCount, JobData.DamageDivisor)
+	: FPlayer(JobData.AttackMessage, JobData.HitCount, JobData.DamageDivisor, JobData.JobMessage)
 {
 	ModifyStat(JobData.BonusStat, "add", JobData.BonusValue);
 }
@@ -12,7 +12,7 @@ std::string FWarrior::Attack() const
 }
 
 FMage::FMage(const FJobData& JobData)
-	: FPlayer(JobData.AttackMessage, JobData.HitCount, JobData.DamageDivisor)
+	: FPlayer(JobData.AttackMessage, JobData.HitCount, JobData.DamageDivisor, JobData.JobMessage)
 {
 	ModifyStat(JobData.BonusStat, "add", JobData.BonusValue);
 }
@@ -23,7 +23,7 @@ std::string FMage::Attack() const
 }
 
 FThief::FThief(const FJobData& JobData)
-	: FPlayer(JobData.AttackMessage, JobData.HitCount, JobData.DamageDivisor)
+	: FPlayer(JobData.AttackMessage, JobData.HitCount, JobData.DamageDivisor, JobData.JobMessage)
 {
 	ModifyStat(JobData.BonusStat, "add", JobData.BonusValue);
 }
@@ -34,7 +34,7 @@ std::string FThief::Attack() const
 }
 
 FArcher::FArcher(const FJobData& JobData)
-	: FPlayer(JobData.AttackMessage, JobData.HitCount, JobData.DamageDivisor)
+	: FPlayer(JobData.AttackMessage, JobData.HitCount, JobData.DamageDivisor, JobData.JobMessage)
 {
 	ModifyStat(JobData.BonusStat, "add", JobData.BonusValue);
 }

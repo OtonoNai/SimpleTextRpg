@@ -36,10 +36,10 @@ protected:
 
 private:
     std::string Name;
-    int Hp;
-    int Mp;
-    int Atk;
-    int Def;
+    int Hp = 0;
+    int Mp = 0;
+    int Atk = 0;
+    int Def = 0;
     bool bIsValidStatus = false;
     int HitCount;
     int DamageDivisor;

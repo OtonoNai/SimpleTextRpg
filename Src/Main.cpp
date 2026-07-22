@@ -10,7 +10,9 @@
 #include "ConsoleUtils.h"
 #include "Monster.h"
 #include "MonsterLoader.h"
+#include "Battle.h"
 #include <Windows.h>
+#include <iostream>
 
 int main()
 {
@@ -52,8 +54,28 @@ int main()
         {
             WaitLoading("Update", TextData);
         }
+
         UpdateRender(TextData, *Player);
         SetNext(TextData, Phase);
+
+        if (Phase == 4)
+        {
+            ClearConsole();
+            std::map<std::string, FMonster> Monsters = LoadMonsters("./Data/Monsters.csv");
+            FMonster Slime = Monsters.at("slime");
+
+            if (RunBattle(*Player, Slime) == EBattleResult::Victory)
+            {
+                if (Slime.GetDropItemId() != "none")
+                {
+                    Inventory.AddItem(Slime.GetDropItemId(), 1);
+                }
+            }
+
+            std::cout << std::endl << "[테스트] slime_jelly 보유 여부: " << Inventory.HasItem("slime_jelly", 1) << std::endl;
+            std::cin.get();
+            break;
+        }
 
         if (TextData.bAdvancePhase && CheckExit())
         {
@@ -62,6 +84,6 @@ int main()
     }
 
     delete Player;
-
+    
     return 0;
 }

@@ -150,3 +150,23 @@ void FPlayer::ApplyJobBonus()
 {
 	ModifyStat(BonusStat, "add", BonusValue);
 }
+
+void FPlayer::TakeDamage(int Amount)
+{
+	Hp -= Amount;
+
+	if (Hp < 0)
+	{
+		Hp = 0;
+	}
+}
+
+bool FPlayer::IsAlive() const
+{
+	return Hp > 0;
+}
+
+const std::string& FPlayer::GetName() const
+{
+	return Name;
+}

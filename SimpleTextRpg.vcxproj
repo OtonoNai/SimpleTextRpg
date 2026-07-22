@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Battle.cpp" />
     <ClCompile Include="Src\ConsoleUtils.cpp" />
     <ClCompile Include="Src\CSVReader.cpp" />
     <ClCompile Include="Src\GameScreen.cpp" />
@@ -28,10 +29,13 @@
     <ClCompile Include="Src\JobLoader.cpp" />
     <ClCompile Include="Src\JobTypes.cpp" />
     <ClCompile Include="Src\Main.cpp" />
+    <ClCompile Include="Src\Monster.cpp" />
+    <ClCompile Include="Src\MonsterLoader.cpp" />
     <ClCompile Include="Src\Player.cpp" />
     <ClCompile Include="Src\TextDataLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Battle.h" />
     <ClInclude Include="Src\ConsoleUtils.h" />
     <ClInclude Include="Src\CSVReader.h" />
     <ClInclude Include="Src\GameScreen.h" />
@@ -39,6 +43,8 @@
     <ClInclude Include="Src\Item.h" />
     <ClInclude Include="Src\ItemLoader.h" />
     <ClInclude Include="Src\JobLoader.h" />
+    <ClInclude Include="Src\Monster.h" />
+    <ClInclude Include="Src\MonsterLoader.h" />
     <ClInclude Include="Src\Player.h" />
     <ClInclude Include="Src\TextDataLoader.h" />
     <ClInclude Include="Src\TextDataTypes.h" />

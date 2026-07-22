@@ -1,5 +1,5 @@
 ﻿monster_id,display_name,hp,atk,def,drop_item_id,exp_reward
-slime,슬라임,,,,,
-goblin,고블린,,,,,
-orc,오크,,,,,
-dragon,드래곤,,,,,
+slime,슬라임,30,20,10,slime_jelly,30
+goblin,고블린,50,25,12,old_dagger,50
+orc,오크,80,35,18,old_dagger,80
+dragon,드래곤,200,60,20,none,300

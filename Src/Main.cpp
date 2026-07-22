@@ -8,6 +8,8 @@
 #include "JobTypes.h"
 #include "JobLoader.h"
 #include "ConsoleUtils.h"
+#include "Monster.h"
+#include "MonsterLoader.h"
 #include <Windows.h>
 
 int main()
@@ -50,7 +52,6 @@ int main()
         {
             WaitLoading("Update", TextData);
         }
-
         UpdateRender(TextData, *Player);
         SetNext(TextData, Phase);
 

@@ -17,9 +17,13 @@ public:
     void ModifyStat(std::string StatName, std::string Operation, int Value);
     void ApplyJobBonus();
 
+    void TakeDamage(int Amount);
+    bool IsAlive() const;
+
     bool GetIsValidStatus();
     void SetIsValidStatus(bool bInValue);
 
+    const std::string& GetName() const;
     int GetHp() const;
     int GetMp() const;
     int GetAtk() const;

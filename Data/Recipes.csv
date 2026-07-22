@@ -1,2 +1,3 @@
 ﻿recipe_id,result_item_id,ingredient1_id,qty1,ingredient2_id,qty2,initial_stock,max_stock
-hp_potion_recipe,hp_potion,herb,1,clear_water,1,,
+hp_potion_recipe,hp_potion,herb,1,clear_water,1,3,3
+mp_potion_recipe,mp_potion,herb,1,berry,1,3,3

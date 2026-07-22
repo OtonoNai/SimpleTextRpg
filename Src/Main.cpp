@@ -11,6 +11,8 @@
 #include "Monster.h"
 #include "MonsterLoader.h"
 #include "Battle.h"
+#include "RecipeLoader.h"
+#include "PotionShop.h"
 #include <Windows.h>
 #include <iostream>
 
@@ -72,7 +74,18 @@ int main()
                 }
             }
 
-            std::cout << std::endl << "[테스트] slime_jelly 보유 여부: " << Inventory.HasItem("slime_jelly", 1) << std::endl;
+            std::vector<FRecipe> Recipes = LoadRecipes("./Data/Recipes.csv");
+            FPotionShop Shop(Recipes);
+
+            std::cout << std::endl << "[테스트] 전체 레시피:" << std::endl;
+            Shop.ShowAll(Items);
+
+            std::cout << std::endl << "[테스트] herb 재료로 검색:" << std::endl;
+            for (const auto& R : Shop.SearchByIngredient("herb"))
+            {
+                std::cout << "-> " << R.RecipeId << std::endl;
+            }
+
             std::cin.get();
             break;
         }

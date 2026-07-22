@@ -32,6 +32,8 @@
     <ClCompile Include="Src\Monster.cpp" />
     <ClCompile Include="Src\MonsterLoader.cpp" />
     <ClCompile Include="Src\Player.cpp" />
+    <ClCompile Include="Src\PotionShop.cpp" />
+    <ClCompile Include="Src\RecipeLoader.cpp" />
     <ClCompile Include="Src\TextDataLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +48,8 @@
     <ClInclude Include="Src\Monster.h" />
     <ClInclude Include="Src\MonsterLoader.h" />
     <ClInclude Include="Src\Player.h" />
+    <ClInclude Include="Src\PotionShop.h" />
+    <ClInclude Include="Src\RecipeLoader.h" />
     <ClInclude Include="Src\TextDataLoader.h" />
     <ClInclude Include="Src\TextDataTypes.h" />
     <ClInclude Include="Src\JobTypes.h" />

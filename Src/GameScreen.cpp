@@ -49,6 +49,48 @@ RETRY_INPUT:
 	return Value;
 }
 
+int ReadMenuChoice(int Min, int Max)
+{
+	CONSOLE_SCREEN_BUFFER_INFO Csbi;
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Csbi);
+	int X = Csbi.dwCursorPosition.X;
+	int Y = Csbi.dwCursorPosition.Y;
+
+RETRY_CHOICE:
+	MoveCursor(X, Y);
+
+	std::string Input;
+	std::getline(std::cin, Input);
+
+	try
+	{
+		int Value = stoi(Input);
+
+		if (Value >= Min && Value <= Max)
+		{
+			return Value;
+		}
+
+		MoveCursor(X, Y);
+		std::cout << Min << "부터 " << Max << " 사이의 값을 입력해주세요";
+		Sleep(1000);
+		MoveCursor(X, Y);
+		std::cout << ClearLine();
+		FlushInput();
+		goto RETRY_CHOICE;
+	}
+	catch (const std::invalid_argument&)
+	{
+		MoveCursor(X, Y);
+		std::cout << "숫자만 입력하세요";
+		Sleep(1000);
+		MoveCursor(X, Y);
+		std::cout << ClearLine();
+		FlushInput();
+		goto RETRY_CHOICE;
+	}
+}
+
 void InitRender(FTextData& Data)
 {
 	std::vector<FTextDataView> Temp = Data.View;
@@ -154,7 +196,7 @@ void HandleMainMenu(FTextData& Data, FPlayer& Player, FInventory& Inventory, con
 		}
 		else
 		{
-			Data.LastInteractMessage = "패배했습니다...";
+			Data.LastInteractMessage = "패배했습니다";
 		}
 		
 		Data.bAdvancePhase = false;
@@ -168,23 +210,22 @@ void HandleMainMenu(FTextData& Data, FPlayer& Player, FInventory& Inventory, con
 			std::cout << Entry.first.GetDisplayName() << " x" << Entry.second << std::endl;
 		}
 
-		std::cout << std::endl << "계속하려면 Enter..." << std::endl;
+		std::cout << std::endl << "계속하려면 Enter" << std::endl;
 		std::cin.get();
 
-		Data.LastInteractMessage = "인벤토리를 확인했습니다.";
+		Data.LastInteractMessage = "인벤토리를 확인했습니다";
 		Data.bAdvancePhase = false;
 	}
 	else if (Value == "3")
 	{
 		std::cout << std::endl << "1.전체보기 2.이름검색 3.재료검색 : ";
-		std::string Choice;
-		std::getline(std::cin, Choice);
+		int Choice = ReadMenuChoice(1, 3);
 
-		if (Choice == "1")
+		if (Choice == 1)
 		{
 			Shop.ShowAll(Items);
 		}
-		else if (Choice == "2")
+		else if (Choice == 2)
 		{
 			std::cout << "검색할 이름 : ";
 			std::string Name;
@@ -195,7 +236,7 @@ void HandleMainMenu(FTextData& Data, FPlayer& Player, FInventory& Inventory, con
 				std::cout << "-> " << Recipe.RecipeId << std::endl;
 			}
 		}
-		else if (Choice == "3")
+		else if (Choice == 3)
 		{
 			std::cout << "검색할 재료 : ";
 			std::string Ingredient;
@@ -207,15 +248,15 @@ void HandleMainMenu(FTextData& Data, FPlayer& Player, FInventory& Inventory, con
 			}
 		}
 
-		std::cout << std::endl << "계속하려면 Enter..." << std::endl;
+		std::cout << std::endl << "계속하려면 Enter" << std::endl;
 		std::cin.get();
 
-		Data.LastInteractMessage = "포션 제작소를 이용했습니다.";
+		Data.LastInteractMessage = "포션 제작소를 이용했습니다";
 		Data.bAdvancePhase = false;
 	}
 	else if (Value == "0")
 	{
-		Data.LastInteractMessage = "게임을 종료합니다.";
+		Data.LastInteractMessage = "게임을 종료합니다";
 		Data.bAdvancePhase = true;
 	}
 }

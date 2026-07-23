@@ -135,6 +135,92 @@ FPlayer* HandleJobSelection(FTextData& Data, const std::map<std::string, FJobDat
 	return CreatePlayerFromJobSelection(Value, Jobs);
 }
 
+void HandleMainMenu(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std::map<std::string, FItem>& Items, const std::vector<FMonster>& MonsterPool, FPotionShop& Shop)
+{
+	std::string Value = ReadValidatedInput(Data.In[0]);
+
+	if (Value == "1")
+	{
+		FMonster Monster = MonsterPool[rand() & MonsterPool.size()];
+
+		if (RunBattle(Player, Monster) == EBattleResult::Victory)
+		{
+			if (Monster.GetDropItemId() != "none")
+			{
+				Inventory.AddItem(Monster.GetDropItemId(), 1);
+			}
+
+			Data.LastInteractMessage = Monster.GetDisplayName() + " 처치! 아이템을 획득했습니다.";
+		}
+		else
+		{
+			Data.LastInteractMessage = "패배했습니다...";
+		}
+		
+		Data.bAdvancePhase = false;
+	}
+	else if (Value == "2")
+	{
+		std::cout << std::endl << "[ 인벤토리 ]" << std::endl;
+
+		for (const auto& Entry : Inventory.ToDisplayList(Items))
+		{
+			std::cout << Entry.first.GetDisplayName() << " x" << Entry.second << std::endl;
+		}
+
+		std::cout << std::endl << "계속하려면 Enter..." << std::endl;
+		std::cin.get();
+
+		Data.LastInteractMessage = "인벤토리를 확인했습니다.";
+		Data.bAdvancePhase = false;
+	}
+	else if (Value == "3")
+	{
+		std::cout << std::endl << "1.전체보기 2.이름검색 3.재료검색 : ";
+		std::string Choice;
+		std::getline(std::cin, Choice);
+
+		if (Choice == "1")
+		{
+			Shop.ShowAll(Items);
+		}
+		else if (Choice == "2")
+		{
+			std::cout << "검색할 이름 : ";
+			std::string Name;
+			std::getline(std::cin, Name);
+
+			for (const auto& Recipe : Shop.SearchByName(Name, Items))
+			{
+				std::cout << "-> " << Recipe.RecipeId << std::endl;
+			}
+		}
+		else if (Choice == "3")
+		{
+			std::cout << "검색할 재료 : ";
+			std::string Ingredient;
+			std::getline(std::cin, Ingredient);
+
+			for (const auto& Recipe : Shop.SearchByIngredient(Ingredient))
+			{
+				std::cout << "-> " << Recipe.RecipeId << std::endl;
+			}
+		}
+
+		std::cout << std::endl << "계속하려면 Enter..." << std::endl;
+		std::cin.get();
+
+		Data.LastInteractMessage = "포션 제작소를 이용했습니다.";
+		Data.bAdvancePhase = false;
+	}
+	else if (Value == "0")
+	{
+		Data.LastInteractMessage = "게임을 종료합니다.";
+		Data.bAdvancePhase = true;
+	}
+}
+
+
 void GetInput(FTextData& Data, FPlayer& Player, FInventory& Inventory, const std::map<std::string, FItem>& Items, int Phase)
 {
 	std::vector<FTextDataView> TempView = Data.View;

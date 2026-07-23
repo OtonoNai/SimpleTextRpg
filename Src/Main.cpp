@@ -14,7 +14,8 @@
 #include "RecipeLoader.h"
 #include "PotionShop.h"
 #include <Windows.h>
-#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
@@ -28,6 +29,10 @@ int main()
 
     std::map<std::string, FItem> Items = LoadItems("./Data/Items.csv");
     std::map<std::string, FJobData> Jobs = LoadJobs("./Data/Jobs.csv");
+    std::map<std::string, FMonster> AllMonsters = LoadMonsters("./Data/Monsters.csv");
+    std::vector<FMonster> MonsterPool = { AllMonsters.at("slime"), AllMonsters.at("goblin") };
+    std::vector<FRecipe> Recipes = LoadRecipes("./Data/Recipes.csv");
+    FPotionShop Shop(Recipes);
     LoadStartingInventory(Inventory, "./Data/StartingInventory.csv");
 
     while (true)
@@ -42,6 +47,10 @@ int main()
         if (Phase == 1)
         {
             Player = HandleJobSelection(TextData, Jobs);
+        }
+        else if (Phase == 4)
+        {
+            HandleMainMenu(TextData, *Player, Inventory, Items, MonsterPool, Shop);
         }
         else
         {
@@ -60,33 +69,8 @@ int main()
         UpdateRender(TextData, *Player);
         SetNext(TextData, Phase);
 
-        if (Phase == 4)
+        if (Phase == 5)
         {
-            ClearConsole();
-            std::map<std::string, FMonster> Monsters = LoadMonsters("./Data/Monsters.csv");
-            FMonster Slime = Monsters.at("slime");
-
-            if (RunBattle(*Player, Slime) == EBattleResult::Victory)
-            {
-                if (Slime.GetDropItemId() != "none")
-                {
-                    Inventory.AddItem(Slime.GetDropItemId(), 1);
-                }
-            }
-
-            std::vector<FRecipe> Recipes = LoadRecipes("./Data/Recipes.csv");
-            FPotionShop Shop(Recipes);
-
-            std::cout << std::endl << "[테스트] 전체 레시피:" << std::endl;
-            Shop.ShowAll(Items);
-
-            std::cout << std::endl << "[테스트] herb 재료로 검색:" << std::endl;
-            for (const auto& R : Shop.SearchByIngredient("herb"))
-            {
-                std::cout << "-> " << R.RecipeId << std::endl;
-            }
-
-            std::cin.get();
             break;
         }
 

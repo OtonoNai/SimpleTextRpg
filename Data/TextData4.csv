@@ -1,0 +1,8 @@
+﻿Line,Text,IO,Vars,Num of Var,Var Type,Var Range,Interact Type,Interact Category,Interact With,Trigger,Required Item,Required Qty,Result Type
+1,border,out,,,,,,,,,,,
+2,    < 메인 메뉴 >,out,,,,,,,,,,,
+3,border,out,,,,,,,,,,,
+4,1. 던전 입장    2. 인벤토리 확인    3. 포션 제작소    0. 게임 종료,out,,,,,,,,,,,
+5,border,out,,,,,,,,,,,
+6,번호를 선택해주세요 : ,in,select,1,int,0-3,,,,,,,
+7,/PLEASE ENTER/,console,,,,,,,,,,,

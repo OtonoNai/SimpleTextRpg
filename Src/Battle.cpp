@@ -16,6 +16,8 @@ int CalculateDamage(int AttakerAtk, int DamageDivisor, int TargetDef)
 EBattleResult RunBattle(FPlayer& Player, FMonster& Monster)
 {
 	std::cout << "[ 전투 시작! ] " << Player.GetName() << " vs " << Monster.GetDisplayName() << std::endl;
+	std::cout << std::endl << "계속하려면 Enter" << std::endl;
+	std::cin.get();
 
 	while (Player.IsAlive() && Monster.IsAlive())
 	{
@@ -41,6 +43,11 @@ EBattleResult RunBattle(FPlayer& Player, FMonster& Monster)
 			break;
 		}
 
+		std::cout << std::endl << "계속하려면 Enter" << std::endl;
+		std::cin.get();
+
+		std::cout << std::endl << "--- 몬스터 턴 ---" << std::endl;
+
 		int MonsterDamage = CalculateDamage(Monster.GetAtk(), 1, Player.GetDef());
 		Player.TakeDamage(MonsterDamage);
 		std::cout << Monster.GetDisplayName() << "이(가) " << Player.GetName() << "에게 " << MonsterDamage << " 데미지!" << std::endl;
@@ -55,7 +62,7 @@ EBattleResult RunBattle(FPlayer& Player, FMonster& Monster)
 	else
 	{
 
-		std::cout << std::endl << "패배..." << std::endl;
+		std::cout << std::endl << "패배" << std::endl;
 		return EBattleResult::Defeat;
 	}
 }
